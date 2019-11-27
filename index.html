@@ -212,7 +212,7 @@ if you only want to challenge Navitia functionality, take your token and go to t
 
 <p>Stay tuned on twitter <a href="https://twitter.com/navitia">@navitia</a>.</p>
 
-<p>At last, we are present on IRC on the network <a href="https://webchat.freenode.net/">Freenode</a>, channel <b>#navitia</b>.</p>
+<p>At last, we are present on the network <code class="prettyprint">matrix.org</code>, channel <a href="https://riot.im/app/#/room/#navitia:matrix.org"><code class="prettyprint">#navitia:matrix.org</code></a>.</p>
 
           <h1 id="some-examples"><a name="some_examples"></a>Some examples</h1>
 
@@ -231,7 +231,7 @@ You will have to use your own token with the examples below.
 <img alt="Navitia basic request" src="images/navitia_basic.png" /></p>
 
 <ol>
-<li><strong>Root url</strong> of the API, the adress of the server.<br>
+<li><strong>Root url</strong> of the API, the address of the server.<br>
 Here <code class="prettyprint">https://api.navitia.io/v1/</code></li>
 <li><strong>Path</strong>, used to filter the request and precise what is affected by the query. This filter is an intersection of multiple <code class="prettyprint">key/value</code> (logical <em>AND</em>).<br>
 Here <code class="prettyprint">/coverage/sandbox/stop_areas/stop_area:RAT:SA:BASTI/lines/line:RAT:M5/</code> means we are looking for information on everything that is in the region <em>&ldquo;sandbox&rdquo;</em> and that is stricly related to both station <em>&ldquo;Bastille&rdquo;</em> and line <em>&ldquo;metro 5&rdquo;</em>.</li>
@@ -1772,7 +1772,7 @@ to understand the user input even if he has mittens.</p>
 <aside class="warning">
     Until now, you have to specify the right coverage to get `/places`.<br>
     If you like to play, you can test the &ldquo;beta&rdquo; `/places`, without any coverage:
-    it will soon be able to request entire Earth on adresses, POIs, stop areas&hellip; with geographical sort.
+    it will soon be able to request entire Earth on addresses, POIs, stop areas&hellip; with geographical sort.
 </aside>
 
 <h3 id="parameters">Parameters</h3>
@@ -1830,7 +1830,7 @@ to understand the user input even if he has mittens.</p>
 </tr>
 </tbody></table>
 
-<h2 id="places-nearby"><a name="places-nearby-api"></a>Places Nearby</h2>
+<h2 id="places-nearby"><a name="places-nearby-api"></a>Places nearby</h2>
 
 <blockquote>
 <p><a href="http://canaltp.github.io/navitia-playground/play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2Fsandbox%2Fstop_areas%2Fstop_area%3ARAT%3ASA%3ACAMPO%2Fplaces_nearby">Try it on Navitia playground (click on &ldquo;MAP&rdquo; buttons to see places)</a></p>
@@ -5631,7 +5631,7 @@ and commercial modes when building an output to the traveler.</p>
 <tr>
 <td>label</td>
 <td>string</td>
-<td>Label of the adress. The name is directly taken from the data whereas the label is something we compute for better traveler information. If you don&rsquo;t know what to display, display the label.</td>
+<td>Label of the address. The name is directly taken from the data whereas the label is something we compute for better traveler information. If you don&rsquo;t know what to display, display the label.</td>
 </tr>
 <tr>
 <td>coord</td>
