@@ -55,7 +55,7 @@ an authentication key that must accompany each API call you make.</p>
 <p><strong>Navitia.io</strong> uses <a href="http://tools.ietf.org/html/rfc2617#section-2">Basic HTTP authentication</a>
 for authentication, where the username is the key, and password remains empty.</p>
 
-<p>For example, in a <a href="https://en.wikipedia.org/wiki/CURL">Curl</a> way, you can request either :</p>
+<p>For example, in a <a href="https://en.wikipedia.org/wiki/CURL">Curl</a> way, you can request either (using the fake sandbox token):</p>
 
 <p><code class="prettyprint">curl &#39;https://api.navitia.io/v1/coverage&#39; -H &#39;Authorization: 3b036afe-0110-4202-b9ed-99718476c2e0&#39;</code></p>
 
@@ -68,6 +68,11 @@ for authentication, where the username is the key, and password remains empty.</
 <p>or</p>
 
 <p><code class="prettyprint">curl https://3b036afe-0110-4202-b9ed-99718476c2e0@api.navitia.io/v1/coverage</code></p>
+
+<aside class="notice">
+The token used within this documentation has only access to the &ldquo;sandbox&rdquo; coverage.</br>
+The private token obtained on https://navitia.io has access to other coverages, but not to &ldquo;sandbox&rdquo;.
+</aside>
 
       </div>
       <div class="dark-box">

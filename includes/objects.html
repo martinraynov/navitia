@@ -583,9 +583,21 @@ and commercial modes when building an output to the traveler.</p>
 </tr>
 </tbody></table>
 
-<p>It also encapsulates many instances of vehicle_journey, accessible with the url:</p>
+<p>It encapsulates many instances of vehicle_journey.</p>
+
+<h3 id="vehicle-journey">Vehicle-journey</h3>
+
+<p>A vehicle-journey describes a scheduled vehicle circulation, the days on which it circulates according to base-schedule,
+the days it circulates according to realtime information.</p>
+
+<p>Note that multiple vehicle-journeys are often associated with the same trip for technical and logical
+reasons (to model the daylight saving time, for the changes after applying realtime disruptions, etc.).</p>
+
+<p>The collection is accessible with the url:</p>
 
 <p><code class="prettyprint">https://api.navitia.io/v1/coverage/sandbox/trips/{trip.id}/vehicle_journeys</code>.</p>
+
+<p>Note: this collection is mostly used for debug and technical purposes.</p>
 
 <h3 id="pt_object"><a name="pt-object"></a>Pt_object</h3>
 
@@ -999,7 +1011,7 @@ and commercial modes when building an output to the traveler.</p>
 <tr>
 <td>effect</td>
 <td>Enum</td>
-<td>Normalized value of the effect on the public transport object See the GTFS RT documentation at <a href="https://developers.google.com/transit/gtfs-realtime/reference#Effect">https://developers.google.com/transit/gtfs-realtime/reference#Effect</a></td>
+<td>Normalized value of the effect on the public transport object. See the GTFS RT documentation at <a href="https://gtfs.org/reference/realtime/v2/#enum-effect">https://gtfs.org/reference/realtime/v2/#enum-effect</a>. See also <a href="#realtime">realtime</a> section.</td>
 </tr>
 </tbody></table>
 

@@ -40,14 +40,16 @@
 Real time isn&rsquo;t available on every coverage for Navitia. For real time to be available for a client, it needs to provide real time info about its network to Navitia.
 </aside>
 
-<p>The effect of a disruption can be one of the following:
+<p>The effect of a disruption can be among the following:
 <ul>
     <li><a href="#SIGNIFICANT_DELAYS">SIGNIFICANT_DELAYS</a></li>
     <li><a href="#REDUCED_SERVICE">REDUCED_SERVICE</a></li>
+    <li><a href="#NO_SERVICE">NO_SERVICE</a></li>
     <li><a href="#MODIFIED_SERVICE">MODIFIED_SERVICE</a></li>
     <li><a href="#ADDITIONAL_SERVICE">ADDITIONAL_SERVICE</a></li>
     <li><a href="#UNKNOWN_EFFECT">UNKNOWN_EFFECT</a></li>
-</ul></p>
+</ul>
+This list follows the GTFS RT values documented at <a href="https://gtfs.org/reference/realtime/v2/#enum-effect">https://gtfs.org/reference/realtime/v2/#enum-effect</a>.</p>
 
 <p>For each one of these effects, here&rsquo;s how the Navitia responses will be affected over the different endpoints.</p>
 
@@ -63,7 +65,7 @@ So the data_freshness parameter may affect the number of objects returned depend
 <p>For example when looking for a specific circulation with the collection vehicle_journey using the request:<br>
 <code class="prettyprint">http://api.navitia.io/v1/coverage/&lt;toto&gt;/vehicle_journeys?since=20191008T100000&amp;until=20191008T200000&amp;data_freshness=base_schedule</code>.</p>
 
-<p>A vehicle_journey circulating between since and until that is <strong>fully deleted</strong> by a disruption will
+<p>A vehicle_journey circulating between since and until that is <strong>fully deleted</strong> (NO_SERVICE) by a disruption will
 of course be <strong>visible</strong> if <code class="prettyprint">data_freshness=base_schedule</code>.<br>
 But it <strong>will not appear</strong> with the parameter <code class="prettyprint">data_freshness=realtime</code> as it does not exist in that collection.</p>
 
@@ -304,6 +306,55 @@ Either way, a link to this disruption can be found in the section &ldquo;display
 <h3 id="departures-amp-stop-schedules">Departures &amp; Stop Schedules</h3>
 
 <p>At the deleted stop area, the departure time of the train with a reduced service simply won&rsquo;t be displayed in the list of departures/stop_schedules if &ldquo;data_freshness&rdquo; is set to &ldquo;realtime&rdquo;.</p>
+
+<p>If &ldquo;data_freshness&rdquo; is &ldquo;base_schedule&rdquo;, then the depature time is displayed.<br>
+In that case, a link to this disruption can be found in the section &ldquo;display_informations&rdquo; for departures, in the &ldquo;date_times&rdquo; object itself for stop_schedules.</p>
+
+<h2 id="no-service"><a name="NO_SERVICE"></a>No service</h2>
+
+<p><img alt="image" src="../images/no_service.png" /></p>
+<pre class="highlight shell"><code><span class="c"># Extract of an impacted trip from /disruptions</span>
+<span class="o">{</span>
+    <span class="s2">"application_periods"</span>: ⊖[
+       ⊖<span class="o">{</span>
+            <span class="s2">"begin"</span>: <span class="s2">"20191210T183100"</span>,
+            <span class="s2">"end"</span>: <span class="s2">"20191210T194459"</span>
+        <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"impacted_objects"</span>: ⊖[
+       ⊖<span class="o">{</span>
+            <span class="s2">"pt_object"</span>: ⊖<span class="o">{</span>
+                <span class="s2">"embedded_type"</span>: <span class="s2">"trip"</span>,
+                <span class="s2">"id"</span>: <span class="s2">"OCE:BOA017534OCESNF-20191210"</span>,
+                <span class="s2">"name"</span>: <span class="s2">"OCE:BOA017534OCESNF-20191210"</span>,
+                <span class="s2">"trip"</span>: ⊕<span class="o">{</span>2 items<span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">]</span>,
+    <span class="s2">"severity"</span>: ⊖<span class="o">{</span>
+        <span class="s2">"effect"</span>: <span class="s2">"NO_SERVICE"</span>
+        <span class="s2">"name"</span>: <span class="s2">"trip canceled"</span>,
+    <span class="o">}</span>,
+<span class="o">}</span>
+</code></pre>
+
+<p>The effect of the disruption is <code class="prettyprint">NO_SERVICE</code>. It means that the train won&rsquo;t be circulating at all.</p>
+
+<p>In the disruption, the deleted trip can be found in the &ldquo;impacted_objects&rdquo; list with the
+&ldquo;application_periods&rdquo; describing the period(s) of unavailability for the trip.<br>
+See the <a href="#disruption">disruption</a> objects section for its full content and description.</p>
+
+<div></div>
+
+<h3 id="journeys">Journeys</h3>
+
+<p>If the deleted trip is used by a section of the <code class="prettyprint">base_schedule</code> journey, Navitia will compute a different
+itinerary to the requested station in <code class="prettyprint">realtime</code>, or a later one (without using that trip).<br>
+A link to this disruption can be found in the section &ldquo;display_informations&rdquo; like for other disruptions, on a <code class="prettyprint">base_schedule</code> journey.</p>
+
+<h3 id="departures-amp-stop-schedules">Departures &amp; Stop Schedules</h3>
+
+<p>At the deleted stop area, the departure time of the cancelled train simply won&rsquo;t be displayed in the list of departures/stop_schedules if &ldquo;data_freshness&rdquo; is set to &ldquo;realtime&rdquo;.</p>
 
 <p>If &ldquo;data_freshness&rdquo; is &ldquo;base_schedule&rdquo;, then the depature time is displayed.<br>
 In that case, a link to this disruption can be found in the section &ldquo;display_informations&rdquo; for departures, in the &ldquo;date_times&rdquo; object itself for stop_schedules.</p>
