@@ -478,7 +478,7 @@ That&rsquo;s what we call an <code class="prettyprint">isochron</code> (see <a h
           <h1 id="authentication">Authentication</h1>
 
 <blockquote>
-<p>3 ways to request Navitia</p>
+<p>4 ways to request Navitia</p>
 </blockquote>
 <pre class="highlight shell"><code>
 <span class="c">#using "headers"</span>
@@ -489,6 +489,9 @@ That&rsquo;s what we call an <code class="prettyprint">isochron</code> (see <a h
 
 <span class="c">#using "straight URL"</span>
 <span class="gp">$ </span>curl https://3b036afe-0110-4202-b9ed-99718476c2e0@api.navitia.io/v1/coverage
+
+<span class="c">#using "key" parameter</span>
+<span class="gp">$ </span>curl https://api.navitia.io/v1/coverage?key<span class="o">=</span>3b036afe-0110-4202-b9ed-99718476c2e0
 
 </code></pre>
 
@@ -511,6 +514,10 @@ for authentication, where the username is the key, and password remains empty.</
 <p>or</p>
 
 <p><code class="prettyprint">curl https://3b036afe-0110-4202-b9ed-99718476c2e0@api.navitia.io/v1/coverage</code></p>
+
+<p>or</p>
+
+<p><code class="prettyprint">curl https://api.navitia.io/v1/coverage?key=3b036afe-0110-4202-b9ed-99718476c2e0</code></p>
 
 <aside class="notice">
 The token used within this documentation has only access to the &ldquo;sandbox&rdquo; coverage.</br>
