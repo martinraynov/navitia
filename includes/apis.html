@@ -1553,7 +1553,7 @@ These disruptions won&rsquo;t be on the <code class="prettyprint">display_inform
 <td>nop</td>
 <td>max_duration</td>
 <td>int</td>
-<td>Maximum duration of journeys in seconds (from <code class="prettyprint">datetime</code> parameter).<br>More usefull when computing an isochrone (only <code class="prettyprint">from</code> or <code class="prettyprint">to</code> is provided).<br>On a classic journey (from-to), it will mostly speedup Navitia: You may have journeys a bit longer than that value (you would have to filter them).</td>
+<td>If <code class="prettyprint">datetime</code> represents the departure of the journeys requested, then the last public transport section of all journeys will end before <code class="prettyprint">datetime</code> + <code class="prettyprint">max_duration</code> .<br>If <code class="prettyprint">datetime</code> represents the arrival of the journeys requested, then the first public transport section of all journeys will start after <code class="prettyprint">datetime</code> - <code class="prettyprint">max_duration</code> <br>More useful when computing an isochrone (only <code class="prettyprint">from</code> or <code class="prettyprint">to</code> is provided)<br>Unit is seconds</td>
 <td>86400</td>
 </tr>
 <tr>
