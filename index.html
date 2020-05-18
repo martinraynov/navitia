@@ -74,16 +74,16 @@
 
 <h3 id="approach"> Approach</h3>
 
-<p>Navitia is an open-source web API, <strong>initially</strong> built to provide traveler information on urban transportation networks.<br>
-Its main purpose is to provide day-to-day informations to travelers.<br>
+<p>Navitia is an open-source web API, <strong>initially</strong> built to provide traveler information on urban transportation networks.
+Its main purpose is to provide day-to-day informations to travelers.
 Over time, Navitia has been able to do way more, <em>sometimes</em> for technical and debuging purpose <em>or</em> because other functional needs fit quite well in what Navitia can do <em>or</em> just because it was quite easy and super cool.</p>
 
 <p>Technically, Navitia is a <a href="http://en.wikipedia.org/wiki/HATEOAS">HATEOAS</a> API that returns JSON formated results.</p>
 
 <h3 id="who-39-s-who"> Who&rsquo;s who</h3>
 
-<p>Navitia is instanciated and exposed publicly through <a href="http://api.navitia.io">api.navitia.io</a>.<br>
-Developments on Navitia are lead by Kisio Digital (previously CanalTP).<br>
+<p>Navitia is instanciated and exposed publicly through <a href="http://api.navitia.io">api.navitia.io</a>.
+Developments on Navitia are lead by Kisio Digital (previously CanalTP).
 Kisio Digital is a subsidiary of Keolis (itself a subsidiary of SNCF, French national railway company).</p>
 
 <aside class="notice">
@@ -233,17 +233,17 @@ You will have to use your own token with the examples below (if you switch to an
 <span class="gp">$ </span>curl <span class="s1">'https://api.navitia.io/v1/coverage/sandbox/stop_areas/stop_area%3ARAT%3ASA%3ABASTI/lines/line%3ARAT%3AM5/departures?count=4&amp;depth=2&amp;'</span> -H <span class="s1">'Authorization: 3b036afe-0110-4202-b9ed-99718476c2e0'</span>
 </code></pre>
 
-<p>A query to Navitia&rsquo;s API is divided in 4 parts, as highlighted by colors in a <a href="http://canaltp.github.io/navitia-playground/play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2Fsandbox%2Fstop_areas%2Fstop_area%253ARAT%253ASA%253ABASTI%2Flines%2Fline%253ARAT%253AM5%2Fdepartures%3Fcount%3D4%26depth%3D2%26&amp;token=3b036afe-0110-4202-b9ed-99718476c2e0">Navitia Playground example</a>:<br>
+<p>A query to Navitia&rsquo;s API is divided in 4 parts, as highlighted by colors in a <a href="http://canaltp.github.io/navitia-playground/play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2Fsandbox%2Fstop_areas%2Fstop_area%253ARAT%253ASA%253ABASTI%2Flines%2Fline%253ARAT%253AM5%2Fdepartures%3Fcount%3D4%26depth%3D2%26&amp;token=3b036afe-0110-4202-b9ed-99718476c2e0">Navitia Playground example</a>:
 <img alt="Navitia basic request" src="images/navitia_basic.png" /></p>
 
 <ol>
-<li><strong>Root url</strong> of the API, the address of the server.<br>
+<li><strong>Root url</strong> of the API, the address of the server.
 Here <code class="prettyprint">https://api.navitia.io/v1/</code></li>
-<li><strong>Path</strong>, used to filter the request and precise what is affected by the query. This filter is an intersection of multiple <code class="prettyprint">key/value</code> (logical <em>AND</em>).<br>
+<li><strong>Path</strong>, used to filter the request and precise what is affected by the query. This filter is an intersection of multiple <code class="prettyprint">key/value</code> (logical <em>AND</em>).
 Here <code class="prettyprint">/coverage/sandbox/stop_areas/stop_area:RAT:SA:BASTI/lines/line:RAT:M5/</code> means we are looking for information on everything that is in the region <em>&ldquo;sandbox&rdquo;</em> and that is stricly related to both station <em>&ldquo;Bastille&rdquo;</em> and line <em>&ldquo;metro 5&rdquo;</em>.</li>
-<li><strong>Endpoint</strong>, specifies what type of information is requested, so the <em>feature</em>. It can be a service, like <em>journeys</em>, <em>isochrones</em>, <em>places</em> or a collection of objects, like <em>lines</em>, <em>stop_areas</em>, etc.<br>
+<li><strong>Endpoint</strong>, specifies what type of information is requested, so the <em>feature</em>. It can be a service, like <em>journeys</em>, <em>isochrones</em>, <em>places</em> or a collection of objects, like <em>lines</em>, <em>stop_areas</em>, etc.
 Here <code class="prettyprint">/departures?</code> means we are requesting <em>&ldquo;next departures&rdquo;</em>.</li>
-<li><strong>Parameters</strong>, used to specify any additional detail linked to the endpoint requested.<br>
+<li><strong>Parameters</strong>, used to specify any additional detail linked to the endpoint requested.
 Here <code class="prettyprint">?count=4&amp;depth=2&amp;</code> means we are requesting the next <strong><em>4</em></strong> departures and we want the response to be detailed to a depth of <strong><em>2</em></strong>.</li>
 </ol>
 
@@ -849,7 +849,7 @@ In order to do that, you will have to</p>
 
 <h2 id="objects-order">Objects order</h2>
 
-<p>Unless specified, objects lists are not sorted and stability of objects&rsquo; order is not guaranteed.<br>
+<p>Unless specified, objects lists are not sorted and stability of objects&rsquo; order is not guaranteed.
 This is also true for the ordering of the attributes of objects.</p>
 
 <p>Examples of sorted objects tables:</p>
@@ -872,7 +872,7 @@ This is also true for the ordering of the attributes of objects.</p>
 
 <h2 id="objects-attributes">Objects attributes</h2>
 
-<p>Like almost any API, objects are subject to adaptations.<br>
+<p>Like almost any API, objects are subject to adaptations.
 Please be warned that we allow Navitia to add new attributes to objects, and it will never be considered a breaking change.</p>
 
 <p>We also allow Navitia to add values to enum, so be prepared to that. For example <a href="#section">section&rsquo;s</a> type of journeys are regularly evolving.</p>
@@ -1260,9 +1260,9 @@ paginate results.</p>
 
 <h4 id="depth"><a name="depth"></a>depth</h4>
 
-<p>You are looking for something, but Navitia doesn&rsquo;t output it in your favorite endpoint?<br>
-You want to request more from navitia feed?<br>
-You are receiving feeds that are too important and too slow with low bandwidth?<br>
+<p>You are looking for something, but Navitia doesn&rsquo;t output it in your favorite endpoint?
+You want to request more from navitia feed?
+You are receiving feeds that are too important and too slow with low bandwidth?
 You would like Navitia to serve GraphQL but it is still not planned?</p>
 
 <p>Feeds from endpoint might miss informations, but this tiny <code class="prettyprint">depth=</code> parameter can
@@ -1274,31 +1274,31 @@ expand Navitia power by making it more wordy. Or lighter if you want it.</p>
 <li>Get &ldquo;line 1&rdquo; id
 
 <ul>
-<li><a href="https://api.navitia.io/v1/coverage/sandbox/pt_objects?q=metro%201">https://api.navitia.io/v1/coverage/sandbox/pt_objects?q=metro%201</a><br>
+<li><a href="https://api.navitia.io/v1/coverage/sandbox/pt_objects?q=metro%201">https://api.navitia.io/v1/coverage/sandbox/pt_objects?q=metro%201</a>
 The id is &ldquo;line:RAT:M1&rdquo;</li>
 </ul></li>
 <li>Get routes for this line
 
 <ul>
-<li><a href="https://api.navitia.io/v1/coverage/sandbox/lines/line:RAT:M1/routes">https://api.navitia.io/v1/coverage/sandbox/lines/line:RAT:M1/routes</a><br>
+<li><a href="https://api.navitia.io/v1/coverage/sandbox/lines/line:RAT:M1/routes">https://api.navitia.io/v1/coverage/sandbox/lines/line:RAT:M1/routes</a>
 Default depth is <code class="prettyprint">depth=1</code></li>
 </ul></li>
 <li>Want to get a tiny response? Just add <code class="prettyprint">depth=0</code>
 
 <ul>
-<li><a href="https://api.navitia.io/v1/coverage/sandbox/lines/line:RAT:M1/routes?depth=0">https://api.navitia.io/v1/coverage/sandbox/lines/line:RAT:M1/routes?depth=0</a><br>
+<li><a href="https://api.navitia.io/v1/coverage/sandbox/lines/line:RAT:M1/routes?depth=0">https://api.navitia.io/v1/coverage/sandbox/lines/line:RAT:M1/routes?depth=0</a>
 The response is lighter (parent lines disappear for example)</li>
 </ul></li>
 <li>Want more informations, just add <code class="prettyprint">depth=2</code>
 
 <ul>
-<li><a href="https://api.navitia.io/v1/coverage/sandbox/lines/line:RAT:M1/routes?depth=2">https://api.navitia.io/v1/coverage/sandbox/lines/line:RAT:M1/routes?depth=2</a><br>
+<li><a href="https://api.navitia.io/v1/coverage/sandbox/lines/line:RAT:M1/routes?depth=2">https://api.navitia.io/v1/coverage/sandbox/lines/line:RAT:M1/routes?depth=2</a>
 The response is a little more verbose (some geojson can appear in response when using your open data token)</li>
 </ul></li>
 <li>Wanna fat more informations, let&rsquo;s try <code class="prettyprint">depth=3</code>
 
 <ul>
-<li><a href="https://api.navitia.io/v1/coverage/sandbox/lines/line:RAT:M1/routes?depth=3">https://api.navitia.io/v1/coverage/sandbox/lines/line:RAT:M1/routes?depth=3</a><br>
+<li><a href="https://api.navitia.io/v1/coverage/sandbox/lines/line:RAT:M1/routes?depth=3">https://api.navitia.io/v1/coverage/sandbox/lines/line:RAT:M1/routes?depth=3</a>
 Big response: all stop_points are shown</li>
 </ul></li>
 <li>Wanna spam the internet bandwidth? Try <code class="prettyprint">depth=42</code>
@@ -3085,14 +3085,14 @@ please compute a journey from the &ldquo;center&rdquo; of isochrone to that prec
 
 <h4 id="isochrones-without-public-transport">Isochrones without public transport</h4>
 
-<p>The main goal of Navitia is to handle public transport, so it&rsquo;s not recommended to avoid them.<br>
+<p>The main goal of Navitia is to handle public transport, so it&rsquo;s not recommended to avoid them.
 However if your are willing to do that, you can use a little trick and
 pass the parameters <code class="prettyprint">&amp;allowed_id=physical_mode:Bus&amp;forbidden_id=physical_mode:Bus</code>.
 You will only get circles.</p>
 
 <h4 id="car-isochrones">Car isochrones</h4>
 
-<p>Using car in Navitia isochrones is not recommended.<br>
+<p>Using car in Navitia isochrones is not recommended.
 It is only handled for compatibility with <code class="prettyprint">/journeys</code> but tends to squash every other result.</p>
 
 <h2 id="route-schedules"><a name="route-schedules"></a>Route Schedules</h2>
@@ -3452,8 +3452,8 @@ HTTP/1.1 200 OK
 point as:
 <img alt="stop_schedules" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Panneau_SIEL_couleurs_Paris-Op%C3%A9ra.jpg/640px-Panneau_SIEL_couleurs_Paris-Op%C3%A9ra.jpg" /></p>
 
-<p>The response is made of an array of <a href="#stop-schedule">stop_schedule</a>, and another one of <a href="#note">note</a>.<br>
-<a href="#context">Context</a> object provides the <code class="prettyprint">current_datetime</code>, useful to compute waiting time when requesting Navitia without a <code class="prettyprint">from_datetime</code>.<br>
+<p>The response is made of an array of <a href="#stop-schedule">stop_schedule</a>, and another one of <a href="#note">note</a>.
+<a href="#context">Context</a> object provides the <code class="prettyprint">current_datetime</code>, useful to compute waiting time when requesting Navitia without a <code class="prettyprint">from_datetime</code>.
 Can be accessed via: <a href="https://api.navitia.io/v1/%7Ba_path_to_a_resource%7D/stop_schedules">https://api.navitia.io/v1/{a_path_to_a_resource}/stop_schedules</a></p>
 
 <p>See how disruptions affect stop schedules in the <a href="#realtime">real time</a> section.</p>
@@ -3861,8 +3861,8 @@ HTTP/1.1 200 OK
 
 </code></pre>
 
-<p>This service provides the state of public transport traffic, grouped by lines and all their stops.<br>
-It can be called for an overall coverage or for a specific object.<br>
+<p>This service provides the state of public transport traffic, grouped by lines and all their stops.
+It can be called for an overall coverage or for a specific object.
 Can be accessed via: <a href="https://api.navitia.io/v1/%7Ba_path_to_a_resource%7D/line_reports">https://api.navitia.io/v1/{a_path_to_a_resource}/line_reports</a></p>
 
 <p><img src="./images/traffic_reports.png" alt="Traffic reports" width="300"/></p>
@@ -4069,7 +4069,7 @@ of <a href="#pt-objects">pt_objects</a> linked (for example stop_areas, stop_poi
 <li>  1 line which is the grouping object
 
 <ul>
-<li>  it can contain links to its disruptions.<br>
+<li>  it can contain links to its disruptions.
 These disruptions are globals and might not be applied on stop_areas and stop_points.</li>
 </ul></li>
 <li>  1..n pt_objects
@@ -4108,8 +4108,8 @@ HTTP/1.1 200 OK
 
 <p>Also known as <code class="prettyprint">/traffic_reports</code> service. We recommand to use line_reports in place of traffic_reports.</p>
 
-<p>This service provides the state of public transport traffic, grouped by network.<br>
-It can be called for an overall coverage or for a specific object.<br>
+<p>This service provides the state of public transport traffic, grouped by network.
+It can be called for an overall coverage or for a specific object.
 Can be accessed via: <a href="https://api.navitia.io/v1/%7Ba_path_to_a_resource%7D/traffic_reports">https://api.navitia.io/v1/{a_path_to_a_resource}/traffic_reports</a></p>
 
 <h3 id="parameters">Parameters</h3>
@@ -4366,7 +4366,7 @@ of lines and an array of stop_areas.</p>
 <li>  1 network which is the grouping object
 
 <ul>
-<li>  it can contain links to its disruptions.<br>
+<li>  it can contain links to its disruptions.
 These disruptions are globals and might not be applied on lines or stop_areas.</li>
 </ul></li>
 <li>  0..n lines
@@ -4377,7 +4377,7 @@ These disruptions are globals and might not be applied on lines or stop_areas.</
 <li>  0..n stop_areas
 
 <ul>
-<li>  each stop_area contains at least a link to its disruptions<br>
+<li>  each stop_area contains at least a link to its disruptions
 If a stop_area is used by multiple networks, it will appear each time.</li>
 </ul></li>
 </ul>
@@ -4394,7 +4394,7 @@ HTTP/1.1 200 OK
         <span class="o">{</span>
             <span class="s2">"line"</span>: <span class="o">{</span>15 items<span class="o">}</span>,
             <span class="s2">"stop_area_equipments"</span>: <span class="o">[</span>
-                <span class="o">{</span>  
+                <span class="o">{</span>
                     <span class="s2">"equipment_details"</span>: <span class="o">[</span>
                         <span class="o">{</span>
                             <span class="s2">"current_availability"</span>: <span class="o">{</span>
@@ -4428,10 +4428,10 @@ HTTP/1.1 200 OK
 
 <p>Also known as the <code class="prettyprint">&quot;/equipment_reports&quot;</code> service.</p>
 
-<p>This service provides the state of equipments such as lifts or elevators that are giving you better accessibility to public transport facilities.<br>
-The endpoint will report accessible equipment per stop area and per line. Which means that an equipment detail is reported at the stop area level, with all stop areas gathered per line.<br>
-Some of the fields (cause, effect, periods etc&hellip;) are only displayed if a realtime equipment provider is setup with available data. Otherwise, only information provided by the NTFS will be reported.<br>
-For more information, refer to <a href="#equipment-reports">Equipment reports</a> API description.<br>
+<p>This service provides the state of equipments such as lifts or elevators that are giving you better accessibility to public transport facilities.
+The endpoint will report accessible equipment per stop area and per line. Which means that an equipment detail is reported at the stop area level, with all stop areas gathered per line.
+Some of the fields (cause, effect, periods etc&hellip;) are only displayed if a realtime equipment provider is setup with available data. Otherwise, only information provided by the NTFS will be reported.
+For more information, refer to <a href="#equipment-reports">Equipment reports</a> API description.
 Can be accessed via: <a href="https://api.navitia.io/v1/%7Ba_path_to_a_resource%7D/equipment_reports">https://api.navitia.io/v1/{a_path_to_a_resource}/equipment_reports</a></p>
 
 <aside class="warning">
@@ -5911,7 +5911,7 @@ It serves several goals:</p>
 
 <ul>
 <li>  <code class="prettyprint">timezone</code> provides timezone of any datetime in the response.</li>
-<li>  <code class="prettyprint">current_datetime</code> provides the time the call was made.<br>
+<li>  <code class="prettyprint">current_datetime</code> provides the time the call was made.
 It is precious to compute the waiting time until next passages (journeys, departures, etc.),
 as when no datetime is provided at call, Navitia uses that &ldquo;current_datetime&rdquo; as reference time.</li>
 <li>  <code class="prettyprint">car_direct_path</code> can also be provided in journeys to help compare ecological footprint of transport.</li>
@@ -6797,18 +6797,18 @@ A disruption is present in the response of the endpoints described if the reques
 
 <h2 id="public-transport-object-collections"><a name="PT_object_collections_data_freshness"></a>Public transport object collections</h2>
 
-<p>Several public transport objects have separate collections for <code class="prettyprint">base_schedule</code> and <code class="prettyprint">realtime</code>.<br>
+<p>Several public transport objects have separate collections for <code class="prettyprint">base_schedule</code> and <code class="prettyprint">realtime</code>.
 So the data_freshness parameter may affect the number of objects returned depending on the request.</p>
 
-<p>For example when looking for a specific circulation with the collection vehicle_journey using the request:<br>
+<p>For example when looking for a specific circulation with the collection vehicle_journey using the request:
 <code class="prettyprint">http://api.navitia.io/v1/coverage/&lt;toto&gt;/vehicle_journeys?since=20191008T100000&amp;until=20191008T200000&amp;data_freshness=base_schedule</code>.</p>
 
 <p>A vehicle_journey circulating between since and until that is <strong>fully deleted</strong> (NO_SERVICE) by a disruption will
-of course be <strong>visible</strong> if <code class="prettyprint">data_freshness=base_schedule</code>.<br>
+of course be <strong>visible</strong> if <code class="prettyprint">data_freshness=base_schedule</code>.
 But it <strong>will not appear</strong> with the parameter <code class="prettyprint">data_freshness=realtime</code> as it does not exist in that collection.</p>
 
 <p>On the other hand, a vehicle_journey that is <strong>created</strong> by a realtime feed will only be <strong>visible</strong> if
-<code class="prettyprint">data_freshness=realtime</code> on that same request.<br>
+<code class="prettyprint">data_freshness=realtime</code> on that same request.
 And it will <strong>not appear</strong> if <code class="prettyprint">data_freshness=base_schedule</code>.</p>
 
 <h2 id="trip-delayed"><a name="SIGNIFICANT_DELAYS"></a>Trip delayed</h2>
@@ -6913,10 +6913,10 @@ http://api.navitia.io/v1/coverage/&lt;coverage&gt;/journeys?from<span class="o">
 <li>whereas &ldquo;arrival_date_time&rdquo;/&ldquo;departure_date_time&rdquo; are the actual arrival/departure time, after the delay is applied</li>
 </ul>
 
-<p>The delay can also be observed for every stop point of the journey with the same parameters in &ldquo;stop_date_times&rdquo;.<br>
+<p>The delay can also be observed for every stop point of the journey with the same parameters in &ldquo;stop_date_times&rdquo;.
 If the parameter &ldquo;data_freshness&rdquo; is set to &ldquo;base_schedule&rdquo;, then &ldquo;base_arrival_date_time&rdquo;/&ldquo;base_departure_date_time&rdquo; = &ldquo;arrival_date_time&rdquo;/&ldquo;departure_date_time&rdquo;.</p>
 
-<p>A list of the disruptions impacting the journey is also present at the root level of the response.<br>
+<p>A list of the disruptions impacting the journey is also present at the root level of the response.
 A link to the concerned disruption can be found in the section &ldquo;display_informations&rdquo;.</p>
 
 <div></div>
@@ -6968,7 +6968,7 @@ http://api.navitia.io/v1/coverage/&lt;coverage&gt;/physical_modes/&lt;physical_m
 
 <p>In the &ldquo;stop_date_time&rdquo; section of the response, the parameter &ldquo;stop_date_time&rdquo; is &ldquo;realtime&rdquo; and the fields &ldquo;arrival_date_time&rdquo;/&ldquo;departure_date_time&rdquo; take the delay into account, whereas &ldquo;base_arrival_date_time&rdquo;/&ldquo;base_departure_date_time&rdquo; show the base-schedule departure/arrival datetime.</p>
 
-<p>A list of the disruptions impacting the departures is also present at the root level of the response.<br>
+<p>A list of the disruptions impacting the departures is also present at the root level of the response.
 A link to the concerned disruption can be found in the section &ldquo;display_informations&rdquo;.</p>
 
 <div></div>
@@ -7012,7 +7012,7 @@ http://api.navitia.io/v1/coverage/&lt;coverage&gt;/physical_modes/&lt;physical_m
 
 <p>In the list of &ldquo;date_times&rdquo; available in the response, the parameter &ldquo;data_freshness&rdquo; is &ldquo;realtime&rdquo; and the field &ldquo;date_time&rdquo; takes the delay into account, whereas &ldquo;base_date_time&rdquo; shows the base-schedule departure datetime.</p>
 
-<p>A list of the disruptions impacting the stop schedules is also present at the root level of the response.<br>
+<p>A list of the disruptions impacting the stop schedules is also present at the root level of the response.
 A link to the concerned disruption can be found in the in the &ldquo;date_times&rdquo; object itself.</p>
 
 <h2 id="reduced-service"><a name="REDUCED_SERVICE"></a>Reduced service</h2>
@@ -7030,22 +7030,22 @@ A link to the concerned disruption can be found in the in the &ldquo;date_times&
 
 <p>The effect of the disruption is <code class="prettyprint">REDUCED_SERVICE</code>. It means that the train won&rsquo;t be serving one or more stations in its journey.</p>
 
-<p>In the disruption, the deleted stations can be found in the list of &ldquo;impacted_stops&rdquo; with the departure/arrival status set to &ldquo;deleted&rdquo;.<br>
+<p>In the disruption, the deleted stations can be found in the list of &ldquo;impacted_stops&rdquo; with the departure/arrival status set to &ldquo;deleted&rdquo;.
 See the <a href="#disruption">disruption</a> objects section for its full content and description.</p>
 
 <div></div>
 
 <h3 id="journeys">Journeys</h3>
 
-<p>If the stop deleted is the origin/destination of a section of the journey, Navitia will compute a different itinerary to the requested station.<br>
-If not (deleting intermediate stop), the journey won&rsquo;t be affected.<br>
+<p>If the stop deleted is the origin/destination of a section of the journey, Navitia will compute a different itinerary to the requested station.
+If not (deleting intermediate stop), the journey won&rsquo;t be affected.
 Either way, a link to this disruption can be found in the section &ldquo;display_informations&rdquo; like for other disruptions.</p>
 
 <h3 id="departures-amp-stop-schedules">Departures &amp; Stop Schedules</h3>
 
 <p>At the deleted stop area, the departure time of the train with a reduced service simply won&rsquo;t be displayed in the list of departures/stop_schedules if &ldquo;data_freshness&rdquo; is set to &ldquo;realtime&rdquo;.</p>
 
-<p>If &ldquo;data_freshness&rdquo; is &ldquo;base_schedule&rdquo;, then the depature time is displayed.<br>
+<p>If &ldquo;data_freshness&rdquo; is &ldquo;base_schedule&rdquo;, then the depature time is displayed.
 In that case, a link to this disruption can be found in the section &ldquo;display_informations&rdquo; for departures, in the &ldquo;date_times&rdquo; object itself for stop_schedules.</p>
 
 <h2 id="no-service"><a name="NO_SERVICE"></a>No service</h2>
@@ -7079,7 +7079,7 @@ In that case, a link to this disruption can be found in the section &ldquo;displ
 <p>The effect of the disruption is <code class="prettyprint">NO_SERVICE</code>. It means that the train won&rsquo;t be circulating at all.</p>
 
 <p>In the disruption, the deleted trip can be found in the &ldquo;impacted_objects&rdquo; list with the
-&ldquo;application_periods&rdquo; describing the period(s) of unavailability for the trip.<br>
+&ldquo;application_periods&rdquo; describing the period(s) of unavailability for the trip.
 See the <a href="#disruption">disruption</a> objects section for its full content and description.</p>
 
 <div></div>
@@ -7087,14 +7087,14 @@ See the <a href="#disruption">disruption</a> objects section for its full conten
 <h3 id="journeys">Journeys</h3>
 
 <p>If the deleted trip is used by a section of the <code class="prettyprint">base_schedule</code> journey, Navitia will compute a different
-itinerary to the requested station in <code class="prettyprint">realtime</code>, or a later one (without using that trip).<br>
+itinerary to the requested station in <code class="prettyprint">realtime</code>, or a later one (without using that trip).
 A link to this disruption can be found in the section &ldquo;display_informations&rdquo; like for other disruptions, on a <code class="prettyprint">base_schedule</code> journey.</p>
 
 <h3 id="departures-amp-stop-schedules">Departures &amp; Stop Schedules</h3>
 
 <p>At the deleted stop area, the departure time of the cancelled train simply won&rsquo;t be displayed in the list of departures/stop_schedules if &ldquo;data_freshness&rdquo; is set to &ldquo;realtime&rdquo;.</p>
 
-<p>If &ldquo;data_freshness&rdquo; is &ldquo;base_schedule&rdquo;, then the depature time is displayed.<br>
+<p>If &ldquo;data_freshness&rdquo; is &ldquo;base_schedule&rdquo;, then the depature time is displayed.
 In that case, a link to this disruption can be found in the section &ldquo;display_informations&rdquo; for departures, in the &ldquo;date_times&rdquo; object itself for stop_schedules.</p>
 
 <h2 id="modified-service"><a name="MODIFIED_SERVICE"></a>Modified service</h2>
@@ -7114,7 +7114,7 @@ In that case, a link to this disruption can be found in the section &ldquo;displ
 
 <p>The effect of the disruption is <code class="prettyprint">MODIFIED_SERVICE</code>. It means that there is one or several stop points added into the trip. This can be at any position in the trip (origin and destination included).</p>
 
-<p>In the disruption, new stop points can be found in the list of &ldquo;impacted_stops&rdquo; with the departure/arrival status set to &ldquo;added&rdquo;. The scheduled arrival/departure at the new stop point can be found in &ldquo;amended_arrival_time&rdquo;/&ldquo;amended_departure_time&rdquo;.<br>
+<p>In the disruption, new stop points can be found in the list of &ldquo;impacted_stops&rdquo; with the departure/arrival status set to &ldquo;added&rdquo;. The scheduled arrival/departure at the new stop point can be found in &ldquo;amended_arrival_time&rdquo;/&ldquo;amended_departure_time&rdquo;.
 See the <a href="#disruption">disruption</a> objects section for its full content and description.</p>
 
 <div></div>
@@ -7180,14 +7180,14 @@ http://api.navitia.io/v1/coverage/&lt;coverage&gt;/journeys?from<span class="o">
 
 <p>The status of the journey is <code class="prettyprint">MODIFIED_SERVICE</code>. In a public transport section of the response, &ldquo;arrival_date_time&rdquo;/&ldquo;departure_date_time&rdquo; are the arrival/departure times of an added stop point. New stop points are only used when the &ldquo;data_freshness&rdquo; parameter is set to &ldquo;realtime&rdquo;.</p>
 
-<p>A list of the disruptions impacting the journey is also present at the root level of the response.<br>
+<p>A list of the disruptions impacting the journey is also present at the root level of the response.
 A link to the concerned disruption can be found in the section &ldquo;display_informations&rdquo;.</p>
 
 <div></div>
 
 <h3 id="departures-amp-stop-schedules">Departures &amp; Stop Schedules</h3>
 
-<p>At the added stop area, the departure time of the train with a modified service is displayed if &ldquo;data_freshness&rdquo; is set to &ldquo;realtime&rdquo;.<br>
+<p>At the added stop area, the departure time of the train with a modified service is displayed if &ldquo;data_freshness&rdquo; is set to &ldquo;realtime&rdquo;.
 In that case, a link to this disruption can be found in the section &ldquo;display_informations&rdquo; for departures, in the &ldquo;date_times&rdquo; object itself for stop_schedules.</p>
 
 <p>The departure time of the train with a modified service simply won&rsquo;t be displayed in the list of departures/stop_schedules if &ldquo;data_freshness&rdquo; is set to &ldquo;base_schedule&rdquo;.</p>
@@ -7210,7 +7210,7 @@ In that case, a link to this disruption can be found in the section &ldquo;displ
 
 <p>The effect of the disruption is <code class="prettyprint">ADDITIONAL_SERVICE</code>. It means that a new trip has been scheduled.</p>
 
-<p>In the disruption, every stops served by the new train can be found in the list of &ldquo;impacted_stops&rdquo; with the departure/arrival status set to &ldquo;added&rdquo;. The scheduled arrival/departure at the new stop point can be found in &ldquo;amended_arrival_time&rdquo;/&ldquo;amended_departure_time&rdquo;.<br>
+<p>In the disruption, every stops served by the new train can be found in the list of &ldquo;impacted_stops&rdquo; with the departure/arrival status set to &ldquo;added&rdquo;. The scheduled arrival/departure at the new stop point can be found in &ldquo;amended_arrival_time&rdquo;/&ldquo;amended_departure_time&rdquo;.
 See the <a href="#disruption">disruption</a> objects section for its full content and description.</p>
 
 <div></div>
@@ -7276,15 +7276,15 @@ http://api.navitia.io/v1/coverage/&lt;coverage&gt;/journeys?from<span class="o">
     <span class="o">]</span>
 </code></pre>
 
-<p>The status of the journey is <code class="prettyprint">ADDITIONAL_SERVICE</code>. This new journey can only be displayed if &ldquo;data_freshness&rdquo; is set to &ldquo;realtime&rdquo;.<br>
-A list of disruptions impacting the journey is also present at the root level of the response.<br>
-A link to the concerned disruption can be found in the section &ldquo;display_informations&rdquo;.  </p>
+<p>The status of the journey is <code class="prettyprint">ADDITIONAL_SERVICE</code>. This new journey can only be displayed if &ldquo;data_freshness&rdquo; is set to &ldquo;realtime&rdquo;.
+A list of disruptions impacting the journey is also present at the root level of the response.
+A link to the concerned disruption can be found in the section &ldquo;display_informations&rdquo;.</p>
 
 <div></div>
 
 <h3 id="departures-amp-stop-schedules">Departures &amp; Stop Schedules</h3>
 
-<p>At one of the added stop area from the additional trip, the departure time of the added train is displayed if &ldquo;data_freshness&rdquo; is set to &ldquo;realtime&rdquo;.<br>
+<p>At one of the added stop area from the additional trip, the departure time of the added train is displayed if &ldquo;data_freshness&rdquo; is set to &ldquo;realtime&rdquo;.
 In that case, a link to this disruption can be found in the section &ldquo;display_informations&rdquo; for departures, in the &ldquo;date_times&rdquo; object itself for stop_schedules.</p>
 
 <p>The departure time of the train with an additional service simply won&rsquo;t be displayed in the list of departures/stop_schedules if &ldquo;data_freshness&rdquo; is set to &ldquo;base_schedule&rdquo;.</p>
@@ -7305,15 +7305,15 @@ In that case, a link to this disruption can be found in the section &ldquo;displ
 <span class="o">}</span>,
 </code></pre>
 
-<p>The effect of the disruption is <code class="prettyprint">UNKNOWN_EFFECT</code>. It means that the disruption affecting the journey is no longer effective, and the trip is back to its theoritical schedule.<br>
-In the list of &ldquo;impacted_stops&rdquo; in the disruption, the &ldquo;arrival_status&rdquo;/&ldquo;departure_status&rdquo; is set to &ldquo;unchanged&rdquo;.<br>
+<p>The effect of the disruption is <code class="prettyprint">UNKNOWN_EFFECT</code>. It means that the disruption affecting the journey is no longer effective, and the trip is back to its theoritical schedule.
+In the list of &ldquo;impacted_stops&rdquo; in the disruption, the &ldquo;arrival_status&rdquo;/&ldquo;departure_status&rdquo; is set to &ldquo;unchanged&rdquo;.
 See the <a href="#disruption">disruption</a> objects section for its full content and description.</p>
 
 <div></div>
 
 <h3 id="journeys">Journeys</h3>
 
-<p>When requesting a journey that was previously disrupted and is now back to normal, the journey response will be the same with the parameter &ldquo;data_freshness&rdquo; set to &ldquo;realtime&rdquo; or to &ldquo;base_schedule&rdquo;.<br>
+<p>When requesting a journey that was previously disrupted and is now back to normal, the journey response will be the same with the parameter &ldquo;data_freshness&rdquo; set to &ldquo;realtime&rdquo; or to &ldquo;base_schedule&rdquo;.
 In this case, no disruption is present in the response.</p>
 
 <div></div>
@@ -7391,7 +7391,7 @@ http://api.navitia.io/v1/coverage/&lt;coverage&gt;/physical_modes/&lt;physical_m
 
 <p>In the list of &ldquo;date_times&rdquo; available in the response, the field &ldquo;data_freshness&rdquo; is &ldquo;realtime&rdquo; and the field &ldquo;date_time&rdquo; is equal to the field &ldquo;base_date_time&rdquo;.</p>
 
-<p>No disruption is present at the root level of the response and so, in the sections &ldquo;date_times&rdquo; and &ldquo;display_informations&rdquo;, there&rsquo;s no link to any disruption.  </p>
+<p>No disruption is present at the root level of the response and so, in the sections &ldquo;date_times&rdquo; and &ldquo;display_informations&rdquo;, there&rsquo;s no link to any disruption.</p>
 
       </div>
       <div class="dark-box">
