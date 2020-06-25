@@ -630,6 +630,20 @@ http://api.navitia.io/v1/coverage/&lt;coverage&gt;/physical_modes/&lt;physical_m
 
 <p>No disruption is present at the root level of the response and so, in the sections &ldquo;date_times&rdquo; and &ldquo;display_informations&rdquo;, there&rsquo;s no link to any disruption.</p>
 
+<div></div>
+
+<h3 id="terminus-schedules">Terminus Schedules</h3>
+<pre class="highlight shell"><code><span class="c"># Request example for /terminus_schedules (data_freshness=base_schedule by default)</span>
+http://api.navitia.io/v1/coverage/&lt;coverage&gt;/physical_modes/&lt;physical_mode&gt;/lines/&lt;line&gt;/stop_areas/&lt;stop_area&gt;/terminus_schedules?from_datetime<span class="o">=</span>&lt;from_date&gt;&amp;data_freshness<span class="o">=</span>realtime
+</code></pre>
+<pre class="highlight shell"><code><span class="c"># Extract of an impacted terminus_schedules object from the response /terminus_schedules</span>
+Same elements as <span class="k">in </span>stop_scedule object.
+</code></pre>
+
+<p>In the list of &ldquo;date_times&rdquo; available in the response, the field &ldquo;data_freshness&rdquo; is &ldquo;realtime&rdquo; and the field &ldquo;date_time&rdquo; is equal to the field &ldquo;base_date_time&rdquo;.</p>
+
+<p>No disruption is present at the root level of the response and so, in the sections &ldquo;date_times&rdquo; and &ldquo;display_informations&rdquo;, there&rsquo;s no link to any disruption.</p>
+
       </div>
       <div class="dark-box">
       </div>

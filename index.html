@@ -390,6 +390,7 @@ In this case it needs a region id. This id can be found in the <code class="pret
 <li><a href="https://api.navitia.io/v1/coverage/fr-idf/coords/2.377310;48.847002/places_nearby">https://api.navitia.io/v1/coverage/fr-idf/coords/2.377310;48.847002/places_nearby</a></li>
 <li>or <a href="https://api.navitia.io/v1/coverage/fr-idf/coords/2.377310;48.847002/lines">https://api.navitia.io/v1/coverage/fr-idf/coords/2.377310;48.847002/lines</a></li>
 <li>or <a href="https://api.navitia.io/v1/coverage/fr-idf/coords/2.377310;48.847002/stop_schedules">https://api.navitia.io/v1/coverage/fr-idf/coords/2.377310;48.847002/stop_schedules</a></li>
+<li>or <a href="https://api.navitia.io/v1/coverage/fr-idf/coords/2.377310;48.847002/terminus_schedules">https://api.navitia.io/v1/coverage/fr-idf/coords/2.377310;48.847002/terminus_schedules</a></li>
 <li>or &hellip;</li>
 </ul></li>
 </ul>
@@ -540,6 +541,14 @@ such as: time of departure and arrival, journey time, possible modes of transpor
 
 <p>The &ldquo;Next Departures&rdquo; feature provides the next scheduled departures or arrivals
 for a specific mode of public transport (bus, tram, metro, train) at your selected stop, near coordinates, etc.</p>
+
+<blockquote>
+<p><a href="http://canaltp.github.io/navitia-playground/play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2Fsandbox%2Fstop_areas%2Fstop_area%253ARAT%253ASA%253AGDLYO%2Fterminus_schedules%3Fitems_per_schedule%3D2%26&amp;token=3b036afe-0110-4202-b9ed-99718476c2e0">Try it on Navitia playground (click on &ldquo;EXT&rdquo; buttons to see times)</a></p>
+</blockquote>
+
+<ul>
+<li>use <code class="prettyprint">terminus_schedules</code> if you want to display departures grouped by terminus (2 next departures for each terminus for example)</li>
+</ul>
 
 <blockquote>
 <p><a href="http://canaltp.github.io/navitia-playground/play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2Fsandbox%2Fstop_areas%2Fstop_area%253ARAT%253ASA%253AGDLYO%2Fstop_schedules%3Fitems_per_schedule%3D2%26&amp;token=3b036afe-0110-4202-b9ed-99718476c2e0">Try it on Navitia playground (click on &ldquo;EXT&rdquo; buttons to see times)</a></p>
@@ -849,6 +858,7 @@ In order to do that, you will have to</p>
 <li>journeys in a <code class="prettyprint">/journeys</code> response</li>
 <li><code class="prettyprint">/departures</code> and <code class="prettyprint">/arrivals</code></li>
 <li><code class="prettyprint">/stop_schedules</code></li>
+<li><code class="prettyprint">/terminus_schedules</code></li>
 <li>stop_points in <code class="prettyprint">/routes/{route_id}?depth=3</code></li>
 <li><code class="prettyprint">/places_nearby</code></li>
 <li><code class="prettyprint">/places</code></li>
@@ -3564,6 +3574,63 @@ point as:
 </tr>
 </tbody></table>
 
+<h2 id="terminus-schedules"><a name="terminus-schedules"></a>Terminus Schedules</h2>
+
+<blockquote>
+<p>[Try it on Navitia playground (click on &ldquo;EXT&rdquo; buttons to see times)](http://canaltp.github.io/navitia-playground/play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2Fsandbox%2Fstop_areas%2Fstop_area%253ARAT%253ASA%253AGDLYO%2Fterminus_schedules%3Fitems_per_schedule%3D2%26&amp;token=3b036afe-0110-4202-b9ed-99718476c2e0`&ldquo; shell</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c">#request</span>
+<span class="gp">$ </span>curl <span class="s1">'https://api.navitia.io/v1/coverage/sandbox/lines/line:RAT:M1/terminus_schedules'</span> -H <span class="s1">'Authorization: 3b036afe-0110-4202-b9ed-99718476c2e0'</span>
+
+<span class="c">#response</span>
+Same as stop_schedule but objects are embedded <span class="k">in </span>the <span class="sb">`</span>terminus_schedules<span class="sb">`</span> section instead
+
+HTTP/1.1 200 OK
+<span class="o">{</span>
+    <span class="s2">"terminus_schedules"</span>: <span class="o">[]</span>,
+    <span class="s2">"pagination"</span>: <span class="o">{</span>...<span class="o">}</span>,
+    <span class="s2">"links"</span>: <span class="o">[</span>...],
+    <span class="s2">"disruptions"</span>: <span class="o">[]</span>,
+    <span class="s2">"notes"</span>: <span class="o">[]</span>,
+    <span class="s2">"feed_publishers"</span>: <span class="o">[</span>...],
+    <span class="s2">"exceptions"</span>: <span class="o">[]</span>
+<span class="o">}</span>
+</code></pre>
+
+<p>Also known as <code class="prettyprint">/terminus_schedules</code> service.</p>
+
+<p>This endpoint gives you access to time tables going through a stop point.
+Departures are grouped observing all served stations after considered stop point. This can also be same as:<br>
+<img alt="terminus_schedules" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Panneau_SIEL_couleurs_Paris-Op%C3%A9ra.jpg/640px-Panneau_SIEL_couleurs_Paris-Op%C3%A9ra.jpg" /></p>
+
+<p>The response is made of an array of <a href="#terminus-schedule">terminus_schedule</a>, and another one of <a href="#note">note</a>.<br><a href="#context">Context</a> object provides the <code class="prettyprint">current_datetime</code>, useful to compute waiting time when requesting Navitia without a <code class="prettyprint">from_datetime</code>.<br>Can be accessed via: <a href="https://api.navitia.io/v1/%7Ba_path_to_a_resource%7D/terminus_schedules">https://api.navitia.io/v1/{a_path_to_a_resource}/terminus_schedules</a></p>
+
+<h3 id="accesses">Accesses</h3>
+
+<table><thead>
+<tr>
+<th>url</th>
+<th>Result</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">/coverage/{region_id}/{resource_path}/terminus_schedules</code></td>
+<td>List of the schedules grouped by observing all served stations after considered stop_point for a given resource</td>
+</tr>
+<tr>
+<td><code class="prettyprint">/coverage/{lon;lat}/coords/{lon;lat}/terminus_schedules</code></td>
+<td>List of the schedules grouped by observing all served stations after considered stop_point for coordinates, navitia guesses the region from coordinates</td>
+</tr>
+</tbody></table>
+
+<h3 id="parameters">Parameters</h3>
+
+<p>Same as stop_schedule parametres</p>
+
+<h3 id="terminus_schedule-object"><a name="terminus-schedule"></a>Terminus_schedule object</h3>
+
+<p>Same as stop_schedule object</p>
+
 <h2 id="departures"><a name="departures"></a>Departures</h2>
 
 <blockquote>
@@ -3863,7 +3930,7 @@ HTTP/1.1 200 OK
 <ul>
 <li>  <a href="https://api.navitia.io/v1/coverage/fr-idf/networks/network:RER/line_reports">https://api.navitia.io/v1/coverage/fr-idf/networks/network:RER/line_reports</a></li>
 </ul></li>
-<li>  Is there any perturbations on the &ldquo;RER A&rdquo; line ?
+<li>  Is there any perturbations on the &quot;RER A&rdquo; line ?
 
 <ul>
 <li>  <a href="https://api.navitia.io/v1/coverage/fr-idf/networks/network:RER/lines/line:TRN:DUA810801043/line_reports">https://api.navitia.io/v1/coverage/fr-idf/networks/network:RER/lines/line:TRN:DUA810801043/line_reports</a></li>
@@ -7332,6 +7399,20 @@ http://api.navitia.io/v1/coverage/&lt;coverage&gt;/physical_modes/&lt;physical_m
     <span class="s2">"route"</span>: ⊕<span class="o">{</span>8 items<span class="o">}</span>,
     <span class="s2">"stop_point"</span>: ⊕<span class="o">{</span>11 items<span class="o">}</span>,
 <span class="o">}</span>
+</code></pre>
+
+<p>In the list of &ldquo;date_times&rdquo; available in the response, the field &ldquo;data_freshness&rdquo; is &ldquo;realtime&rdquo; and the field &ldquo;date_time&rdquo; is equal to the field &ldquo;base_date_time&rdquo;.</p>
+
+<p>No disruption is present at the root level of the response and so, in the sections &ldquo;date_times&rdquo; and &ldquo;display_informations&rdquo;, there&rsquo;s no link to any disruption.</p>
+
+<div></div>
+
+<h3 id="terminus-schedules">Terminus Schedules</h3>
+<pre class="highlight shell"><code><span class="c"># Request example for /terminus_schedules (data_freshness=base_schedule by default)</span>
+http://api.navitia.io/v1/coverage/&lt;coverage&gt;/physical_modes/&lt;physical_mode&gt;/lines/&lt;line&gt;/stop_areas/&lt;stop_area&gt;/terminus_schedules?from_datetime<span class="o">=</span>&lt;from_date&gt;&amp;data_freshness<span class="o">=</span>realtime
+</code></pre>
+<pre class="highlight shell"><code><span class="c"># Extract of an impacted terminus_schedules object from the response /terminus_schedules</span>
+Same elements as <span class="k">in </span>stop_scedule object.
 </code></pre>
 
 <p>In the list of &ldquo;date_times&rdquo; available in the response, the field &ldquo;data_freshness&rdquo; is &ldquo;realtime&rdquo; and the field &ldquo;date_time&rdquo; is equal to the field &ldquo;base_date_time&rdquo;.</p>

@@ -2722,6 +2722,63 @@ point as:
 </tr>
 </tbody></table>
 
+<h2 id="terminus-schedules"><a name="terminus-schedules"></a>Terminus Schedules</h2>
+
+<blockquote>
+<p>[Try it on Navitia playground (click on &ldquo;EXT&rdquo; buttons to see times)](http://canaltp.github.io/navitia-playground/play.html?request=https%3A%2F%2Fapi.navitia.io%2Fv1%2Fcoverage%2Fsandbox%2Fstop_areas%2Fstop_area%253ARAT%253ASA%253AGDLYO%2Fterminus_schedules%3Fitems_per_schedule%3D2%26&amp;token=3b036afe-0110-4202-b9ed-99718476c2e0`&ldquo; shell</p>
+</blockquote>
+<pre class="highlight shell"><code><span class="c">#request</span>
+<span class="gp">$ </span>curl <span class="s1">'https://api.navitia.io/v1/coverage/sandbox/lines/line:RAT:M1/terminus_schedules'</span> -H <span class="s1">'Authorization: 3b036afe-0110-4202-b9ed-99718476c2e0'</span>
+
+<span class="c">#response</span>
+Same as stop_schedule but objects are embedded <span class="k">in </span>the <span class="sb">`</span>terminus_schedules<span class="sb">`</span> section instead
+
+HTTP/1.1 200 OK
+<span class="o">{</span>
+    <span class="s2">"terminus_schedules"</span>: <span class="o">[]</span>,
+    <span class="s2">"pagination"</span>: <span class="o">{</span>...<span class="o">}</span>,
+    <span class="s2">"links"</span>: <span class="o">[</span>...],
+    <span class="s2">"disruptions"</span>: <span class="o">[]</span>,
+    <span class="s2">"notes"</span>: <span class="o">[]</span>,
+    <span class="s2">"feed_publishers"</span>: <span class="o">[</span>...],
+    <span class="s2">"exceptions"</span>: <span class="o">[]</span>
+<span class="o">}</span>
+</code></pre>
+
+<p>Also known as <code class="prettyprint">/terminus_schedules</code> service.</p>
+
+<p>This endpoint gives you access to time tables going through a stop point.
+Departures are grouped observing all served stations after considered stop point. This can also be same as:<br>
+<img alt="terminus_schedules" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Panneau_SIEL_couleurs_Paris-Op%C3%A9ra.jpg/640px-Panneau_SIEL_couleurs_Paris-Op%C3%A9ra.jpg" /></p>
+
+<p>The response is made of an array of <a href="#terminus-schedule">terminus_schedule</a>, and another one of <a href="#note">note</a>.<br><a href="#context">Context</a> object provides the <code class="prettyprint">current_datetime</code>, useful to compute waiting time when requesting Navitia without a <code class="prettyprint">from_datetime</code>.<br>Can be accessed via: <a href="https://api.navitia.io/v1/%7Ba_path_to_a_resource%7D/terminus_schedules">https://api.navitia.io/v1/{a_path_to_a_resource}/terminus_schedules</a></p>
+
+<h3 id="accesses">Accesses</h3>
+
+<table><thead>
+<tr>
+<th>url</th>
+<th>Result</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code class="prettyprint">/coverage/{region_id}/{resource_path}/terminus_schedules</code></td>
+<td>List of the schedules grouped by observing all served stations after considered stop_point for a given resource</td>
+</tr>
+<tr>
+<td><code class="prettyprint">/coverage/{lon;lat}/coords/{lon;lat}/terminus_schedules</code></td>
+<td>List of the schedules grouped by observing all served stations after considered stop_point for coordinates, navitia guesses the region from coordinates</td>
+</tr>
+</tbody></table>
+
+<h3 id="parameters">Parameters</h3>
+
+<p>Same as stop_schedule parametres</p>
+
+<h3 id="terminus_schedule-object"><a name="terminus-schedule"></a>Terminus_schedule object</h3>
+
+<p>Same as stop_schedule object</p>
+
 <h2 id="departures"><a name="departures"></a>Departures</h2>
 
 <blockquote>
@@ -3021,7 +3078,7 @@ HTTP/1.1 200 OK
 <ul>
 <li>  <a href="https://api.navitia.io/v1/coverage/fr-idf/networks/network:RER/line_reports">https://api.navitia.io/v1/coverage/fr-idf/networks/network:RER/line_reports</a></li>
 </ul></li>
-<li>  Is there any perturbations on the &ldquo;RER A&rdquo; line ?
+<li>  Is there any perturbations on the &quot;RER A&rdquo; line ?
 
 <ul>
 <li>  <a href="https://api.navitia.io/v1/coverage/fr-idf/networks/network:RER/lines/line:TRN:DUA810801043/line_reports">https://api.navitia.io/v1/coverage/fr-idf/networks/network:RER/lines/line:TRN:DUA810801043/line_reports</a></li>
