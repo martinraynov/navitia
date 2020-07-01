@@ -1741,7 +1741,7 @@ They also can only use the allowed stop points for getting in or out of a vehicl
 <tr>
 <td>links</td>
 <td>array of <a href="#link">link</a></td>
-<td>Links related to the journeys</td>
+<td>Links related to the journeys <ul><li><code class="prettyprint">next</code>: search link with <code class="prettyprint">&amp;datetime = departure datetime of first journey + 1 second</code> and <code class="prettyprint">&amp;datetime_represents=departure</code> </li><li><code class="prettyprint">prev</code>: search link with <code class="prettyprint">&amp;datetime = arrival datetime of first journey - 1 second</code> and <code class="prettyprint">&amp;datetime_represents=arrival</code> </li><li> <code class="prettyprint">first</code>: search link with <code class="prettyprint">&amp;datetime = departure date of first journey with 0 time part</code> and <code class="prettyprint">&amp;datetime_represents=departure</code> </li><li><code class="prettyprint">last</code>: search link with <code class="prettyprint">&amp;datetime = arrival date of last journey with 232359 time part</code> and <code class="prettyprint">&amp;datetime_represents=arrival</code> </li><li><code class="prettyprint">physical_modes</code>: physical_modes </li><li>and others: <code class="prettyprint">physical_modes, pois lines, stop_areas, stop_points, poi_types, commercial_modes, addresses, networks, vehicle_journeys, routes</code> </li></ul></td>
 </tr>
 </tbody></table>
 
@@ -1797,7 +1797,7 @@ They also can only use the allowed stop points for getting in or out of a vehicl
 <tr>
 <td>links</td>
 <td><a href="#link">link</a></td>
-<td>Links related to this journey</td>
+<td>Links related to this journey <ul><li><code class="prettyprint">same_journey_schedules</code>: search link for same journey schedules between two stop_areas using the same combination of public transport </li><li><code class="prettyprint">this_journey</code>: search link which returns the same journey </li></ul></td>
 </tr>
 <tr>
 <td>type</td>
