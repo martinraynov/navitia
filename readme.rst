@@ -55,7 +55,7 @@ Approach
 |
 | Technically, Navitia is a HATEOAS_ API that returns JSON formated results.
 
-.. _HATEOAS: http://en.wikipedia.org/wiki/HATEOAS
+.. _HATEOAS: https://en.wikipedia.org/wiki/HATEOAS
 
 
 Who's who
@@ -65,19 +65,19 @@ Who's who
 | Developments on Navitia are lead by Kisio Digital (previously CanalTP).
 | Kisio Digital is a subsidiary of Keolis (itself a subsidiary of SNCF, French national railway company).
 
-.. _api.navitia.io: http://api.navitia.io
+.. _api.navitia.io: https://api.navitia.io
 
 
 More information
 ----------------
 
-* main web site http://www.navitia.io
-* playground http://canaltp.github.io/navitia-playground/
-* integration documentation http://doc.navitia.io
+* main web site https://www.navitia.io
+* playground https://canaltp.github.io/navitia-playground/
+* integration documentation https://doc.navitia.io
 * technical documentation https://github.com/CanalTP/navitia/tree/dev/documentation/rfc
 * twitter @navitia https://twitter.com/navitia
 * google groups navitia https://groups.google.com/d/forum/navitia
-* channel `#navitia` on matrix/riot https://riot.im/app/#/room/%23navitia:matrix.org
+* channel `#navitia` on matrix/element https://app.element.io/#/room/#navitia:matrix.org
 
 
 Getting started
@@ -87,11 +87,11 @@ Want to test the API ?
 ----------------------
 
 | The easiest way to do this is a to go to `navitia.io <https://www.navitia.io/>`_.
-| `Signup <https://www.navitia.io/register/>`_, grab a token, read the `doc <http://doc.navitia.io>`_
+| `Signup <https://www.navitia.io/register/>`_, grab a token, read the `doc <https://doc.navitia.io>`_
   and start using the API!
 
 For a more friendly interface you can use the API through
-`navitia playground <http://canaltp.github.io/navitia-playground/>`_ (no matter the server used).
+`navitia playground <https://canaltp.github.io/navitia-playground/>`_ (no matter the server used).
 
 Want to use you own datasets or infrastructure ?
 ------------------------------------------------
@@ -133,7 +133,7 @@ Navitia is made of 3 main modules:
 
 | Transportation data (in the `NTFS <https://github.com/CanalTP/ntfs-specification/blob/master/readme.md>`_,
   or `GTFS <https://developers.google.com/transit/gtfs/>`_ format) or routing data
-  (mainly from `OpenStreetMap <http://www.openstreetmap.org/>`_ for the moment) can be given to *Ed*.
+  (mainly from `OpenStreetMap <https://www.openstreetmap.org/>`_ for the moment) can be given to *Ed*.
 | *Ed* produces a binary file used by *Kraken*.
 
 .. image:: documentation/diagrams/Navitia_simple_architecture.png
