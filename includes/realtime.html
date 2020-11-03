@@ -48,6 +48,8 @@ Real time isn&rsquo;t available on every coverage for Navitia. For real time to 
     <li><a href="#MODIFIED_SERVICE">MODIFIED_SERVICE</a></li>
     <li><a href="#ADDITIONAL_SERVICE">ADDITIONAL_SERVICE</a></li>
     <li><a href="#UNKNOWN_EFFECT">UNKNOWN_EFFECT</a></li>
+    <li><a href="#MODIFIED_SERVICE">DETOUR</a></li>
+    <li><a href="#OTHER_EFFECT">OTHER_EFFECT</a></li>
 </ul>
 This list follows the GTFS RT values documented at <a href="https://gtfs.org/reference/realtime/v2/#enum-effect">https://gtfs.org/reference/realtime/v2/#enum-effect</a>.</p>
 
@@ -68,6 +70,10 @@ of course be <strong>visible</strong> if <code class="prettyprint">data_freshnes
 
 <p>On the other hand, a vehicle_journey that is <strong>created</strong> by a realtime feed will only be <strong>visible</strong> if
 <code class="prettyprint">data_freshness=realtime</code> on that same request.<br>And it will <strong>not appear</strong> if <code class="prettyprint">data_freshness=base_schedule</code>.</p>
+
+<h2 id="other-effect"><a name="OTHER_EFFECT"></a>Other effect</h2>
+
+<p>There is no known effect related to this disruption. You only have to show the message to your traveler&hellip;</p>
 
 <h2 id="trip-delayed"><a name="SIGNIFICANT_DELAYS"></a>Trip delayed</h2>
 
