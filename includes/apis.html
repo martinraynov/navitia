@@ -748,6 +748,7 @@ It returns a collection of <a href="#pt-object">pt_object</a>.</p>
 <li>  line</li>
 <li>  route</li>
 <li>  stop_area</li>
+<li>  stop_point</li>
 </ul>
 
 <p>Here is a typical use case. A traveler has to find a line between the
@@ -846,7 +847,7 @@ HTTP/1.1 200 OK
 <td>nop</td>
 <td>type[]</td>
 <td>array of string</td>
-<td>Type of objects you want to query It takes one the following values: [<code class="prettyprint">network</code>, <code class="prettyprint">commercial_mode</code>, <code class="prettyprint">line</code>, <code class="prettyprint">route</code>, <code class="prettyprint">stop_area</code>]</td>
+<td>Type of objects you want to query It takes one the following values: [<code class="prettyprint">network</code>, <code class="prettyprint">commercial_mode</code>, <code class="prettyprint">line</code>, <code class="prettyprint">route</code>, <code class="prettyprint">stop_area</code>, <code class="prettyprint">stop_point</code>]</td>
 <td>[<code class="prettyprint">network</code>, <code class="prettyprint">commercial_mode</code>, <code class="prettyprint">line</code>, <code class="prettyprint">route</code>, <code class="prettyprint">stop_area</code>]</td>
 </tr>
 <tr>
@@ -862,6 +863,13 @@ HTTP/1.1 200 OK
 <td>int</td>
 <td>Json response <a href="#depth">depth</a></td>
 <td>1</td>
+</tr>
+<tr>
+<td>nop</td>
+<td>filter</td>
+<td>string</td>
+<td>Use to filter returned objects. for example: network.id=sncf</td>
+<td></td>
 </tr>
 </tbody></table>
 
