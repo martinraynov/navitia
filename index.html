@@ -6638,194 +6638,6 @@ The default value is now.</p>
   </tbody>
 </table>
 
-          <h1 id="lexicon">Lexicon</h1>
-
-<h2 id="introduction">Introduction</h2>
-
-<p>The world of public transportation is really specific, you will see here a small
-introduction to it. A lot of people in the world of public transportation use
-different words to speak about the same thing. Here are the definitions of terms
-employed in www.navitia.io</p>
-
-<p>You can read a mobility lexicon at
-<a href="https://github.com/OpenTransport/vocabulary/blob/master/vocabulary.md">https://github.com/OpenTransport/vocabulary/blob/master/vocabulary.md</a></p>
-
-<p>You will often read &ldquo;PT&rdquo; in this document. PT stands for public transport.</p>
-
-<h2 id="stop-point">Stop Point</h2>
-
-<p>A stop point is the physical object were someone waits for his bus
-(subway, or whatever type of vehicle you can have in a public transport system).</p>
-
-<h2 id="stop-area">Stop Area</h2>
-
-<p>A stop area is a collection of stop points. Generally there are at least two stop
-points per stop area, one per direction of a line. Now think of a hub, you will
-have more than one line. Therefore your stop area will contain more than two stop
-points. In particular cases your stop area can contain only one stop point.</p>
-
-<p>Some datasets do not contain any stop area.</p>
-
-<h2 id="connection">Connection</h2>
-
-<p>This object links two stop points together (named origin and
-destination). It is the walkable part of a journey.</p>
-
-<h2 id="journey-pattern">Journey Pattern</h2>
-
-<p>A journey pattern is an ordered list of stop points. Two vehicles that serve exactly the
-same stop points in exactly the same order belong to to the same journey pattern.</p>
-
-<h2 id="route">Route</h2>
-
-<p>A route is a collection of journey pattern that match the same commercial direction.</p>
-
-<aside class="warning">
-    The GTFS specification uses the term <b>route</b> for the object we call <b>line</b>. It does not
-    have this notion of commercial direction.
-</aside>
-
-<h2 id="line">Line</h2>
-
-<p>A line is a collection of routes. Most of the time you&rsquo;ll just have just two routes.
-This object is called <em>route</em> in the GTFS format.</p>
-
-<h2 id="stop-time">Stop Time</h2>
-
-<p>A stop time represents the time when a bus is planned to arrive and to leave a
-stop point.</p>
-
-          <h1 id="errors">Errors</h1>
-
-<h2 id="code-40x">Code 40x</h2>
-
-<p>When Navitia is unable to give an answer, you&rsquo;ll receive a response with an error object
-containing a unique error id, in a 4XX http code response</p>
-<pre class="highlight shell"><code><span class="c">#request</span>
-<span class="gp">$ </span>curl <span class="s1">'https://api.navitia.io/v1/coverage/sandbox/stop_areas/wrong-one'</span> -H <span class="s1">'Authorization: 3b036afe-0110-4202-b9ed-99718476c2e0'</span>
-
-<span class="c">#response</span>
-HTTP/1.1 404 OK
-
-<span class="o">{</span>
-    <span class="s2">"error"</span>: <span class="o">{</span>
-        <span class="s2">"id"</span>: <span class="s2">"bad_filter"</span>,
-        <span class="s2">"message"</span>: <span class="s2">"ptref : Filters: Unable to find object"</span>
-    <span class="o">}</span>
-<span class="o">}</span>
-</code></pre>
-
-<p>The are two possible 40x http codes :</p>
-
-<ul>
-<li>  Code 404: unable to find an object</li>
-</ul>
-
-<table><thead>
-<tr>
-<th>Error id</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>date_out_of_bounds</td>
-<td>When the given date is out of bounds of the production dates of the region</td>
-</tr>
-<tr>
-<td>no_origin</td>
-<td>Couldn&rsquo;t find an origin for the journeys</td>
-</tr>
-<tr>
-<td>no_destination</td>
-<td>Couldn&rsquo;t find a destination for the journeys</td>
-</tr>
-<tr>
-<td>no_origin_nor_destination</td>
-<td>Couldn&rsquo;t find neither origin nor destination for the journeys</td>
-</tr>
-<tr>
-<td>unknown_object</td>
-<td>Couldn&rsquo;t find one of the request parameters. It can be the region, the API or a PT object</td>
-</tr>
-</tbody></table>
-
-<ul>
-<li>  Code 400: bad request</li>
-</ul>
-
-<table><thead>
-<tr>
-<th>Error id</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>bad_filter</td>
-<td>When you use a custom filter</td>
-</tr>
-<tr>
-<td>unable_to_parse</td>
-<td>When you use a mal-formed custom filter</td>
-</tr>
-<tr>
-<td>unknown_api</td>
-<td>When you request an inexistant endpoint</td>
-</tr>
-<tr>
-<td>bad_format</td>
-<td>When you provide ill-formated parameter (coord for example)</td>
-</tr>
-<tr>
-<td>config_exception</td>
-<td>When you try to configure an external service (street network back-end or autocomplete) with wrong parameters</td>
-</tr>
-</tbody></table>
-
-<h2 id="code-200">Code 200</h2>
-
-<p>Even if everything is correct (input parameters, internal processing)
-Navitia can end up finding that the correct answer is empty.</p>
-
-<table><thead>
-<tr>
-<th>Error id</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>no_solution</td>
-<td>From data, there is no solution available given the request</td>
-</tr>
-</tbody></table>
-
-<h2 id="code-50x">Code 50x</h2>
-
-<p>Ouch. Technical issue :/</p>
-
-<table><thead>
-<tr>
-<th>Error id</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>internal_error</td>
-<td>Something bad and unexpected has happened internally</td>
-</tr>
-<tr>
-<td>service_unavailable</td>
-<td>Navitia isn&rsquo;t responding</td>
-</tr>
-<tr>
-<td>dead_socket</td>
-<td>The requested region isn&rsquo;t responding</td>
-</tr>
-<tr>
-<td>technical_error</td>
-<td>An external service (street network back-end or autocomplete) isn&rsquo;t responding</td>
-</tr>
-</tbody></table>
-
           <h1 id="real-time-integration-in-navita"><a name="realtime"></a> Real time integration in Navita</h1>
 
 <p>Several endpoints can integrate real time information in their responses. In the response received, a disruption will be present and additional information will be provided if the parameter <code class="prettyprint">data_freshness</code> is set to <code class="prettyprint">realtime</code>. If the parameter <code class="prettyprint">data_freshness</code> is set to <code class="prettyprint">base_schedule</code>, the disruption is also present in the response for the user information, but it won&rsquo;t be taken into account in the results of the query.</p>
@@ -7443,6 +7255,194 @@ Same elements as <span class="k">in </span>stop_scedule object.
 <p>In the list of &ldquo;date_times&rdquo; available in the response, the field &ldquo;data_freshness&rdquo; is &ldquo;realtime&rdquo; and the field &ldquo;date_time&rdquo; is equal to the field &ldquo;base_date_time&rdquo;.</p>
 
 <p>No disruption is present at the root level of the response and so, in the sections &ldquo;date_times&rdquo; and &ldquo;display_informations&rdquo;, there&rsquo;s no link to any disruption.</p>
+
+          <h1 id="lexicon">Lexicon</h1>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>The world of public transportation is really specific, you will see here a small
+introduction to it. A lot of people in the world of public transportation use
+different words to speak about the same thing. Here are the definitions of terms
+employed in www.navitia.io</p>
+
+<p>You can read a mobility lexicon at
+<a href="https://github.com/OpenTransport/vocabulary/blob/master/vocabulary.md">https://github.com/OpenTransport/vocabulary/blob/master/vocabulary.md</a></p>
+
+<p>You will often read &ldquo;PT&rdquo; in this document. PT stands for public transport.</p>
+
+<h2 id="stop-point">Stop Point</h2>
+
+<p>A stop point is the physical object were someone waits for his bus
+(subway, or whatever type of vehicle you can have in a public transport system).</p>
+
+<h2 id="stop-area">Stop Area</h2>
+
+<p>A stop area is a collection of stop points. Generally there are at least two stop
+points per stop area, one per direction of a line. Now think of a hub, you will
+have more than one line. Therefore your stop area will contain more than two stop
+points. In particular cases your stop area can contain only one stop point.</p>
+
+<p>Some datasets do not contain any stop area.</p>
+
+<h2 id="connection">Connection</h2>
+
+<p>This object links two stop points together (named origin and
+destination). It is the walkable part of a journey.</p>
+
+<h2 id="journey-pattern">Journey Pattern</h2>
+
+<p>A journey pattern is an ordered list of stop points. Two vehicles that serve exactly the
+same stop points in exactly the same order belong to to the same journey pattern.</p>
+
+<h2 id="route">Route</h2>
+
+<p>A route is a collection of journey pattern that match the same commercial direction.</p>
+
+<aside class="warning">
+    The GTFS specification uses the term <b>route</b> for the object we call <b>line</b>. It does not
+    have this notion of commercial direction.
+</aside>
+
+<h2 id="line">Line</h2>
+
+<p>A line is a collection of routes. Most of the time you&rsquo;ll just have just two routes.
+This object is called <em>route</em> in the GTFS format.</p>
+
+<h2 id="stop-time">Stop Time</h2>
+
+<p>A stop time represents the time when a bus is planned to arrive and to leave a
+stop point.</p>
+
+          <h1 id="errors">Errors</h1>
+
+<h2 id="code-40x">Code 40x</h2>
+
+<p>When Navitia is unable to give an answer, you&rsquo;ll receive a response with an error object
+containing a unique error id, in a 4XX http code response</p>
+<pre class="highlight shell"><code><span class="c">#request</span>
+<span class="gp">$ </span>curl <span class="s1">'https://api.navitia.io/v1/coverage/sandbox/stop_areas/wrong-one'</span> -H <span class="s1">'Authorization: 3b036afe-0110-4202-b9ed-99718476c2e0'</span>
+
+<span class="c">#response</span>
+HTTP/1.1 404 OK
+
+<span class="o">{</span>
+    <span class="s2">"error"</span>: <span class="o">{</span>
+        <span class="s2">"id"</span>: <span class="s2">"bad_filter"</span>,
+        <span class="s2">"message"</span>: <span class="s2">"ptref : Filters: Unable to find object"</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre>
+
+<p>The are two possible 40x http codes :</p>
+
+<ul>
+<li>  Code 404: unable to find an object</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Error id</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>date_out_of_bounds</td>
+<td>When the given date is out of bounds of the production dates of the region</td>
+</tr>
+<tr>
+<td>no_origin</td>
+<td>Couldn&rsquo;t find an origin for the journeys</td>
+</tr>
+<tr>
+<td>no_destination</td>
+<td>Couldn&rsquo;t find a destination for the journeys</td>
+</tr>
+<tr>
+<td>no_origin_nor_destination</td>
+<td>Couldn&rsquo;t find neither origin nor destination for the journeys</td>
+</tr>
+<tr>
+<td>unknown_object</td>
+<td>Couldn&rsquo;t find one of the request parameters. It can be the region, the API or a PT object</td>
+</tr>
+</tbody></table>
+
+<ul>
+<li>  Code 400: bad request</li>
+</ul>
+
+<table><thead>
+<tr>
+<th>Error id</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>bad_filter</td>
+<td>When you use a custom filter</td>
+</tr>
+<tr>
+<td>unable_to_parse</td>
+<td>When you use a mal-formed custom filter</td>
+</tr>
+<tr>
+<td>unknown_api</td>
+<td>When you request an inexistant endpoint</td>
+</tr>
+<tr>
+<td>bad_format</td>
+<td>When you provide ill-formated parameter (coord for example)</td>
+</tr>
+<tr>
+<td>config_exception</td>
+<td>When you try to configure an external service (street network back-end or autocomplete) with wrong parameters</td>
+</tr>
+</tbody></table>
+
+<h2 id="code-200">Code 200</h2>
+
+<p>Even if everything is correct (input parameters, internal processing)
+Navitia can end up finding that the correct answer is empty.</p>
+
+<table><thead>
+<tr>
+<th>Error id</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>no_solution</td>
+<td>From data, there is no solution available given the request</td>
+</tr>
+</tbody></table>
+
+<h2 id="code-50x">Code 50x</h2>
+
+<p>Ouch. Technical issue :/</p>
+
+<table><thead>
+<tr>
+<th>Error id</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>internal_error</td>
+<td>Something bad and unexpected has happened internally</td>
+</tr>
+<tr>
+<td>service_unavailable</td>
+<td>Navitia isn&rsquo;t responding</td>
+</tr>
+<tr>
+<td>dead_socket</td>
+<td>The requested region isn&rsquo;t responding</td>
+</tr>
+<tr>
+<td>technical_error</td>
+<td>An external service (street network back-end or autocomplete) isn&rsquo;t responding</td>
+</tr>
+</tbody></table>
 
       </div>
       <div class="dark-box">
